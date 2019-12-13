@@ -3,14 +3,14 @@
 %  based on code from  Rasmussen and Ghahramani
 % (http://www.gatsby.ucl.ac.uk/~zoubin/course02/)
 
-phoneme = 2;
+phoneme = 1;
 temp = [phno,J];
 temp(temp(:,1) ~= phoneme, :) = [];
 x = temp(:,2:3);
 
 % Initialise parameters
 [n D] = size(x);                    % number of observations (n) and dimension (D)
-k = 3;                              % number of components
+k = 6;                              % number of components
 p = ones(1,k)/k;                    % mixing proportions
 mu = x(ceil(n.*rand(1,k)),:)';      % means picked rqandomly from data
 s2 = zeros(D,D,k);                  % covariance matrices
@@ -70,9 +70,3 @@ try
 catch
   disp('Numerical Error in Loop - Possibly Singular Matrix');
 end;
-disp("mu");
-disp(mu);
-disp("s2")
-disp(s2);
-disp("p")
-disp(p);
